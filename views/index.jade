@@ -1,0 +1,28 @@
+doctype html
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+    p #{"Hello Selassie !"}
+
+  div(ng-controller='AlimentationController')
+    h1 {{aliments.name}}
+    p Quantite = {{aliments.quantite}}
+
+  h2 Liste de courses
+
+  a(href="/biberons") liste de biberons
+
+  div(ng-controller='ListeCourses')
+    ul
+      li(ng-repeat="course in liste")
+        input(type='checkbox', ng-model='course.done')
+        span(class='done-{{course.done}}')
+          {{course.text}}
+
+    form(ng-submit='addCourses()')
+      input(type='text', ng-model='texte', size='30', placeholder='ajouter nouvel ingrédient')
+      input(class='btn-primary', type='submit', value='ajouter')
