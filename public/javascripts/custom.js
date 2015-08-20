@@ -1,14 +1,19 @@
 var myApp = angular.module('alimentation',[]);
 
 myApp.controller('AlimentationController', ['$scope', function($scope) {
-  $scope.aliments = aliment;
+  $scope.type = type_aliment;
+  $scope.aliments = repas;
+  $scope.addAliments ;
+
 }]);
 
-var aliment = {
-  name : 'biberon',
-  quantite : 120
+var type_aliment = [
+  {nom: 'biberon'}
+];
 
-};
+var repas =[
+  {type : type_aliment, quantite : 120, date : '20/08/2015'}
+] ;
 
 myApp.controller('ListeCourses',['$scope', function ($scope) {
   $scope.liste = courses;
