@@ -9,12 +9,19 @@ block content
     p #{"Hello Selassie !"}
 
   div(ng-controller='AlimentationController')
-    h1 {{aliments.name}}
+    h1 nom de l'aliment = {{aliments.name}}
     p Quantite = {{aliments.quantite}}
+
+    a(href="/biberons") liste de biberons
+    br
+    a(href="/allaitement") liste des têtées
+    br
+    a(href="/repas") liste des repas solides
+    br
 
   h2 Liste de courses
 
-  a(href="/biberons") liste de biberons
+
 
 
   div(ng-controller='ListeCourses')

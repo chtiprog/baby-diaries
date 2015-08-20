@@ -12,3 +12,7 @@ router.get('/add', function(req, res, next){
 router.get('/edit', function(req, res, next){
   res.render('edit_repas', {title: 'Edition du repas solide'});
 });
+
+
+
+module.exports = router;
