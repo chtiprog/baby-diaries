@@ -10,12 +10,12 @@ block content
   div(ng-controller='BiberonController')
     ul
       li(ng-repeat="bib in biberon")
-        Date : {{bib.date}}
+        | Date : {{bib.date}}
         br
-        heure : {{bib.heure}}
+        | heure : {{bib.heure}}
         br
-        Quantite : {{bib.quantite}}
-
+        | Quantite : {{bib.quantite}}
+        br
 
   p Ajouter un biberons :
   a(href="/biberons/add") Ajouter un biberon
