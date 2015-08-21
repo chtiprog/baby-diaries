@@ -6,7 +6,16 @@ extends layout
 block content
   h1= title
 
-  p liste de biberons :
+  h2 Liste des biberons :
+  div(ng-controller='BiberonController')
+    ul
+      li(ng-repeat="bib in biberon")
+        Date : {{bib.date}}
+        br
+        heure : {{bib.heure}}
+        br
+        Quantite : {{bib.quantite}}
+
 
   p Ajouter un biberons :
   a(href="/biberons/add") Ajouter un biberon

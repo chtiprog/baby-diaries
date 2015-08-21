@@ -1,19 +1,31 @@
 var myApp = angular.module('alimentation',[]);
 
-myApp.controller('AlimentationController', ['$scope', function($scope) {
-  $scope.type = type_aliment;
-  $scope.aliments = repas;
-  $scope.addAliments ;
+myApp.controller('BiberonController', ['$scope', function($scope) {
+  $scope.biberon = biberons;
 
+  $scope.addBiberon = function(){
+    $scope.biberon.push({quantite:$scope.qte,
+                         date:$scope.date,
+                         heure:$scope.heure});
+    $scope.qte=0;
+    $scope.date="";
+    $scope.heure="";
+};
 }]);
 
-var type_aliment = [
-  {nom: 'biberon'}
-];
+// var type_aliment = [
+//   {nom: 'biberon'},
+//   {nom: 'têtée'},
+//   {nom: 'repas solide'}
+// ];
 
-var repas =[
-  {type : type_aliment, quantite : 120, date : '20/08/2015'}
+var biberons =[
+  {quantite: 120, date: "20/08/2014", heure: "15:30"},
+  {quantite: 90, date: "20/08/2014", heure: "17:15"},
+  {quantite: 150, date: "20/08/2014", heure: "20:00"}
 ] ;
+
+
 
 myApp.controller('ListeCourses',['$scope', function ($scope) {
   $scope.liste = courses;
