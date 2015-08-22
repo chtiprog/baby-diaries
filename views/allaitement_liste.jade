@@ -6,5 +6,19 @@ block content
   h1=title
   p Welcome to #{title}
 
+  h2 Liste des têtées :
+  div(ng-controller='AllaitementController')
+    ul
+      li(ng-repeat="tetee in allaitement")
+        | Date : {{tetee.date}}
+        br
+        | heure : {{tetee.heure}}
+        br
+        | Sein utilisé : {{tetee.sein}}
+        br
+        | Durée : {{tetee.duree}}
+        br
+
+
   p Ajouter une têtée :
   a(href="/allaitement/add") Ajouter une têtée

@@ -13,11 +13,6 @@ myApp.controller('BiberonController', ['$scope', function($scope) {
 };
 }]);
 
-// var type_aliment = [
-//   {nom: 'biberon'},
-//   {nom: 'têtée'},
-//   {nom: 'repas solide'}
-// ];
 
 var biberons =[
   {quantite: 120, date: "20/08/2014", heure: "15:30"},
@@ -25,7 +20,14 @@ var biberons =[
   {quantite: 150, date: "20/08/2014", heure: "20:00"}
 ] ;
 
+myApp.controller('AllaitementController', ['$scope', function($scope){
+  $scope.allaitement = tetee;
+}]);
 
+var tetee = [
+  {date: "20/08/2014", heure:"10:00", sein: "gauche", duree: 10},
+  {date: "20/08/2014", heure:"10:10", sein: "droit", duree: 10}
+];
 
 myApp.controller('ListeCourses',['$scope', function ($scope) {
   $scope.liste = courses;

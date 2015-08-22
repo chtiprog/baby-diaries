@@ -23,5 +23,18 @@ describe('BiberonController', function(){
 
   }));
 
+});
+
+describe('AllaitementController', function(){
+
+  beforeEach(module('alimentation'));
+
+  it('should create "liste" model with 2 tetee', inject(function($controller){
+    var scope = {},
+        ctrl = $controller('AllaitementController', {$scope:scope});
+
+    expect(scope.allaitement.length).toBe(2);
+
+  }));
 
 });
