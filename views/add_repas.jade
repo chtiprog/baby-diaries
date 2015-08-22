@@ -4,4 +4,13 @@ extends layout
 
 block content
   h1=title
-  p Welcome to #{title}
+
+  div(ng-controller='RepasController')
+    form(ng-submit='addRepas()')
+      input(type='text', ng-model='menu', size='30', placeholder='Saisissez le menu')
+      br
+      input(type='text', ng-model='heure', size='30', placeholder='heure du repas')
+      br
+      input(type='text', ng-model='date', size='30', placeholder='date du repas pris')
+      br
+      input(class='btn-primary', type='submit', value='ajouter', onclick="window.location='/repas';")

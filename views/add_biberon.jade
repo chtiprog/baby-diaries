@@ -6,3 +6,13 @@ extends layout
 block content
 
   h1 Nouveau biberon
+
+  div(ng-controller='BiberonController')
+    form(ng-submit='addBiberon()')
+      input(type='text', ng-model='qte', size='30', placeholder='quantite du biberon')
+      br
+      input(type='text', ng-model='date', size='30', placeholder='saisir la date')
+      br
+      input(type='text', ng-model='heure', size='30', placeholder='saisir l\'heure')
+      br
+      input(class='btn-primary', type='submit', value='ajouter', onclick="window.location='/biberons';")

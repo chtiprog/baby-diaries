@@ -5,4 +5,16 @@ extends layout
 
 block content
   h1=title
-  p Welcome to #{title}
+
+
+  div(ng-controller='AllaitementController')
+    form(ng-submit='addAllaitement()')
+      input(type='text', ng-model='date', size='30', placeholder='date de la têtée')
+      br
+      input(type='text', ng-model='heure', size='30', placeholder='heure de la têtée')
+      br
+      input(type='text', ng-model='sein', size='30', placeholder='sein utilisé')
+      br
+      input(type='text', ng-model='duree', size='30', placeholder='durée de la têtée')
+      br
+      input(class='btn-primary', type='submit', value='ajouter', onclick="window.location='/allaitement';")

@@ -9,9 +9,6 @@ block content
     p #{"Hello Selassie !"}
 
   div(ng-controller='AlimentationController')
-    h1 nom de l'aliment = {{aliments.name}}
-    p Quantite = {{aliments.quantite}}
-
     a(href="/biberons") liste de biberons
     br
     a(href="/allaitement") liste des têtées
@@ -22,14 +19,16 @@ block content
   h2 Liste de courses
 
 
-
-
   div(ng-controller='ListeCourses')
     ul
       li(ng-repeat="course in liste")
         input(type='checkbox', ng-model='course.done')
-        span(class='done-{{course.done}}')
-          {{course.text}}
+        span(class='done-{{course.done}}') {{course.text}}
+
+    ul
+      li(ng-repeat="course in liste")
+        | course : {{course.text}}
+        br
 
     form(ng-submit='addCourses()')
       input(type='text', ng-model='texte', size='30', placeholder='ajouter nouvel ingrédient')

@@ -22,6 +22,17 @@ var biberons =[
 
 myApp.controller('AllaitementController', ['$scope', function($scope){
   $scope.allaitement = tetee;
+
+  $scope.addAllaitement = function(){
+    $scope.allaitement.push({date:$scope.date,
+                             heure:$scope.heure,
+                             sein:$scope.sein,
+                             duree:$scope.duree});
+    $scope.date="";
+    $scope.heure="";
+    $scope.sein="gauche";
+    $scope.duree=0;
+  };
 }]);
 
 var tetee = [
@@ -31,6 +42,15 @@ var tetee = [
 
 myApp.controller('RepasController', ['$scope', function($scope){
   $scope.repas = repas_solide;
+
+  $scope.addRepas = function(){
+    $scope.repas.push({
+      menu:$scope.menu, date:$scope.date, heure:$scope.heure
+    });
+    $scope.menu=[];
+    $scope.date="";
+    $scope.heure="";
+  };
 }]);
 
 var repas_solide = [
