@@ -5,7 +5,13 @@ extends layout
 
 block content
 
-  h1 Nouveau biberon
+  h1=title
+
+    h2
+      a(href='/') page d'accueil
+
+    h3
+      a(href='/biberons') retour à la liste des biberons
 
   div(ng-controller='BiberonController')
     form(ng-submit='addBiberon()')

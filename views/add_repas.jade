@@ -4,6 +4,14 @@ extends layout
 
 block content
   h1=title
+  br
+
+  h2
+    a(href='/') page d'accueil
+
+  h3
+    a(href='/repas') retour à la liste des repas solides
+
 
   div(ng-controller='RepasController')
     form(ng-submit='addRepas()')
