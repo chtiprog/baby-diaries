@@ -29,6 +29,17 @@ var tetee = [
   {date: "20/08/2014", heure:"10:10", sein: "droit", duree: 10}
 ];
 
+myApp.controller('RepasController', ['$scope', function($scope){
+  $scope.repas = repas_solide;
+}]);
+
+var repas_solide = [
+  {menu: ["purée de patates douces", "yaourt"],
+   date: "21/08/2014", heure: "18:30"},
+  {menu: ["purée de betteraves", "fromage"],
+   date: "22/08/2014", heure: "12:15"}
+];
+
 myApp.controller('ListeCourses',['$scope', function ($scope) {
   $scope.liste = courses;
 

@@ -4,7 +4,18 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Bienvenue à #{title}
+
+  h2 Liste des repas solides :
+  div(ng-controller='RepasController')
+    ul
+      li(ng-repeat="rep in repas")
+        | Date : {{rep.date}}
+        br
+        | heure : {{rep.heure}}
+        br
+        | menu : {{rep.menu}}
+        br
 
   p Ajouter un repas solide :
   a(href="/repas/add") Ajouter un repas solide

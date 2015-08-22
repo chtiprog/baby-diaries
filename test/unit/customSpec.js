@@ -38,3 +38,17 @@ describe('AllaitementController', function(){
   }));
 
 });
+
+describe('RepasController', function(){
+
+  beforeEach(module('alimentation'));
+
+  it('should create "liste" model with 2 repas', inject(function($controller){
+    var scope = {},
+        ctrl = $controller('RepasController', {$scope:scope});
+
+    expect(scope.repas.length).toBe(2);
+
+  }));
+
+});
