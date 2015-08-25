@@ -11,7 +11,8 @@ The application use NODE.JS, EXPRESS, ANGULAR and MONGODB.
 - clone the repository
 - in the folder "bebe_express" type `npm install` to install all the dependencies
 - to start the application :
+```
     DEBUG=bebe_express npm start
-
+```
 and go to http://localhost:3000
 
