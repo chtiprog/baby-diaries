@@ -1,0 +1,15 @@
+doctype html
+extends layout
+
+block content
+  h1=title
+
+  h2
+    a(href='/') page d'accueil
+
+
+  p Edition du biberon
+
+  h1 Biberon ref : #{biberon._id}
+  p Quantite : #{biberon.quantite}
+  p DOB: #{biberon.dob}

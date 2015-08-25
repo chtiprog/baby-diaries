@@ -9,8 +9,25 @@ block content
   h2
     a(href='/') page d'accueil
 
+  h3 Biberon boucle jade :
+  ul
+    - each biberon, i in biberons
+      li
+        | Quantite
+        = biberon.quantite
+        br
+        | Date et heure
+        = biberon.dob
+        br
+        form(action='/biberons/#{biberon._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+        input(type='hidden',value='DELETE',name='_method')
+        button(type='submit')  Supprimer
+        p
+          a(href='/biberons/#{biberon._id}/edit') Editer
+        p
+          a(href='/biberons/#{biberon._id}') Voir
 
-  h2 Liste des biberons :
+  h2 Liste des biberons angular :
   div(ng-controller='BiberonController')
     ul
       li(ng-repeat="bib in biberon")

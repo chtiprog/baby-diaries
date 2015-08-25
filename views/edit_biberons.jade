@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  h1 Biberon ID #{biberon._id}
+  form(action='/biberons/#{biberon._id}/edit',method='post',name='updatebiberon',enctype='application/x-www-form-urlencoded')
+    p Quantite:
+      input#inputQuantite(type='number', value='#{biberon.quantite}', name='quantite')
+    p DOB:
+      input#inputDob(type='date', value='#{biberondob}', name='dob')
+    p
+      input(type='hidden',value='PUT',name='_method')
+    p
+      button#btnSubmit(type='submit').
+                Modifier

@@ -10,7 +10,8 @@ var users = require('./routes/users');
 var biberons = require('./routes/biberons');
 var allaitement = require('./routes/allaitement');
 var repas = require('./routes/repas');
-
+var db = require('./model/db');
+var biberon = require('./model/biberons');
 var app = express();
 
 // view engine setup
