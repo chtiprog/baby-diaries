@@ -18,7 +18,7 @@ block content
     p Quantite:
       input#inputQuantite(type="number", placeholder="120", name="quantite")
     p DOB:
-      input#inputDob(type="date", name="dob")
+      input#inputDob(type="datetime", name="dob")
     p
       button#btnSubmit(type="submit") valider
 
@@ -27,7 +27,7 @@ block content
     form(ng-submit='addBiberon()')
       input(type='text', ng-model='qte', size='30', placeholder='quantite du biberon')
       br
-      input(type='text', ng-model='date', size='30', placeholder='saisir la date')
+      input(type='datetime', ng-model='date', size='30', placeholder='saisir la date')
       br
       input(type='text', ng-model='heure', size='30', placeholder='saisir l\'heure')
       br
