@@ -1,5 +1,10 @@
 var myApp = angular.module('alimentation',['ngResource']);
 
+myApp.config(['$resourceProvider', function($resourceProvider) {
+  // Don't strip trailing slashes from calculated URLs
+  $resourceProvider.defaults.stripTrailingSlashes = false;
+}]);
+
 myApp.controller('BiberonController', ['$scope', function($scope) {
   $scope.biberon = biberons;
 
