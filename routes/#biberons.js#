@@ -53,19 +53,19 @@ router.route('/')
       dob : dob
     }, function (err, biberon) {
       if (err) {
-        res.send("Il y a eu un problème en ajoutant les informations à la base de donnée.");
+        res.send("Il y a eu un problème en ajoutant les informations (biberon) à la base de donnée.");
       } else {
         //Biberon has been created
         console.log('POST creation nouveau biberon: ' + biberon);
         res.format({
           //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
           html: function(){
-            // If it worked, set the header so the address bar doesn't still say /adduser
+            // If it worked, set the header so the address bar doesn't still say /add user
             res.location("biberons");
             // And forward to success page
             res.redirect("/biberons");
           },
-          //JSON response will show the newly created blob
+          //JSON response will show the newly created biberon
           json: function(){
             res.json(biberon);
           }

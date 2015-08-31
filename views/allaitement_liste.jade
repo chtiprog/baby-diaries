@@ -9,8 +9,29 @@ block content
   h2
     a(href='/') page d'accueil
 
+  h3 Allaitement boucle jade :
+  ul
+    - each allaitement, i in allaitements
+      li
+        | Sein
+        = allaitement.sein
+        br
+        | Durée
+        = allaitement.duree
+        br
+        | Date et heure
+        = allaitement.dob
+        br
+        form(action='/allaitements/#{allaitement._id}/edit',method='post',name='deleteallaitement' ,enctype='application/x-www-form-urlencoded')
+          input(type='hidden',value='DELETE',name='_method')
+          button(type='submit')  Supprimer
+        p
+          a(href='/allaitements/#{allaitement._id}/edit') Editer
+        p
+          a(href='/allaitements/#{allaitement._id}') Voir
 
-  h2 Liste des têtées :
+
+  h2 Liste des têtées angular :
   div(ng-controller='AllaitementController')
     ul
       li(ng-repeat="tetee in allaitement")

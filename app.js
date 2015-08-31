@@ -8,10 +8,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var biberons = require('./routes/biberons');
-var allaitement = require('./routes/allaitement');
+var allaitements = require('./routes/allaitements');
 var repas = require('./routes/repas');
 var db = require('./model/db');
 var biberon = require('./model/biberons');
+var allaitement = require('./model/allaitements');
 var app = express();
 
 // view engine setup
@@ -28,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/biberons', biberons);
-app.use('/allaitement', allaitement);
+app.use('/allaitements', allaitements);
 app.use('/repas', repas);
 app.use('/users', users);
 
