@@ -9,6 +9,23 @@ block content
   h2
     a(href='/') page d'accueil
 
+  h3 Repas boucle jade :
+  ul
+    - each rep, i in repas
+      li
+        | Menu
+        = rep.menu
+        br
+        | Date et heure
+        = rep.dob
+        br
+        form(action='/repas/#{rep._id}/edit', method='post', name= 'deleterepas', enctype='application/x-www-form-urlencoded')
+          input(type='hidden', value='DELETE', name='_method')
+          button(type='submit') Supprimer
+        p
+          a(href='/repas/#{rep._id}/edit') Editer
+        p
+          a(href='repas/#{rep._id}') Voir
 
   h2 Liste des repas solides :
   div(ng-controller='RepasController')

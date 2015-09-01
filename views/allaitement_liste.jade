@@ -30,6 +30,9 @@ block content
         p
           a(href='/allaitements/#{allaitement._id}') Voir
 
+  div Ajouter une têtée :
+    a(href="/allaitements/add")
+      span  Ajouter une têtée
 
   h2 Liste des têtées angular :
   div(ng-controller='AllaitementController')
@@ -43,7 +46,3 @@ block content
         br
         | Durée : {{tetee.duree}}
         br
-
-
-  p Ajouter une têtée :
-  a(href="/allaitement/add") Ajouter une têtée

@@ -13,6 +13,7 @@ var repas = require('./routes/repas');
 var db = require('./model/db');
 var biberon = require('./model/biberons');
 var allaitement = require('./model/allaitements');
+var rep = require('./model/repas');
 var app = express();
 
 // view engine setup
