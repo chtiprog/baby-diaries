@@ -1,0 +1,15 @@
+doctype html
+extends layout
+
+block content
+  h1=title
+
+  h2
+    a(href='/') page d'accueil
+
+
+    p Edition du repas
+
+    h1 Repas ref : #{repas._id}
+    p Menu : #{repas.menu}
+    p Date : #{repas.dob}

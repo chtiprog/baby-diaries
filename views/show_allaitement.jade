@@ -1,0 +1,16 @@
+doctype html
+extends layout
+
+block content
+  h1=title
+
+  h2
+    a(href='/') page d'accueil
+
+
+  p Edition de la têtée
+
+  h1 Têtée ref : #{allaitement._id}
+  p Sein : #{allaitement.sein}
+  p Durée : #{allaitement.duree}
+  p Date : #{allaitement.dob}

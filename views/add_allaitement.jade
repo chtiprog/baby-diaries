@@ -10,10 +10,21 @@ block content
     a(href='/') page d'accueil
 
   h3
-    a(href='/allaitement') retour à la liste des têtées
+    a(href='/allaitements') retour à la liste des têtées
+
+  h3 Formulaire jade :
+  form#formAddAllaitement(name="addallaitement", method="post",action="/allaitements")
+    p Sein:
+      input#inputSein(type="text", placeholder="gauche ou droit", name="sein")
+    p Durée:
+      input#inputDuree(type="number", placeholde="durée en minute", name="duree")
+    p DOB:
+      input#inputDob(type="date", name="dob")
+    p
+      button#btnSubmit(type="submit") valider
 
 
-
+  h3 Formulaire angular :
   div(ng-controller='AllaitementController')
     form(ng-submit='addAllaitement()')
       input(type='text', ng-model='date', size='30', placeholder='date de la têtée')
