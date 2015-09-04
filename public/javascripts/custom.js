@@ -22,7 +22,9 @@ myApp.controller('BiberonController',  ['$scope', 'Biberon', function($scope, Bi
 }]);
 
 myApp.controller('BiberonDetailCtrl', ['$scope', '$routeParams', 'Biberon', function($scope, $routeParams, Biberon){
-  $scope.biberon = Biberon.get({biberonId: $routeParams.biberonId});
+  //$scope.biberon = Biberon.get({biberonId: $routeParams.biberonId});
+  var biberon = Biberon.get({ id:$routeParams.id});
+  $id = biberon.id;
 }]);
 
 

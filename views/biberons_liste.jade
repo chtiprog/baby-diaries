@@ -30,7 +30,7 @@ block content
   h2 Liste des biberons angular :
   div(ng-controller='BiberonController')
     ul
-      li(ng-repeat="bib in biberon")
+      li(ng-repeat="bib in biberons")
         | Date : {{bib.date}}
         br
         | heure : {{bib.heure}}
@@ -38,12 +38,12 @@ block content
         | Quantite : {{bib.quantite}}
         br
 
-   h3 Test with params :
-   div(class="col-md-10" ng-controller='BiberonDetailCtrl')
-     ul(class='biberon')
-       li(ng-repeat="biberon in biberons | filter:query | orderBy:orderProp")
-         a(href='/biberons/{{biberon._id}}/edit' class='thumb') Biberons
-         br
+  h3 Test with params :
+  div(class="col-md-10" ng-controller='BiberonDetailCtrl')
+    ul(class='biberon')
+      li(ng-repeat="bib in biberon | filter:query ")
+        a(href='/biberons/{{bib.id}}/edit' class='thumb') Biberons
+        br
 
 
 

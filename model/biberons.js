@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var biberonSchema = new mongoose.Schema({
-  quantite: { Number, required: true},
+  quantite: Number,
   dob: { type: Date, default: Date.now }
 });
 mongoose.model('Biberon', biberonSchema);
