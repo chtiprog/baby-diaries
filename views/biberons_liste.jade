@@ -38,5 +38,14 @@ block content
         | Quantite : {{bib.quantite}}
         br
 
+   h3 Test with params :
+   div(class="col-md-10" ng-controller='BiberonDetailCtrl')
+     ul(class='biberon')
+       li(ng-repeat="biberon in biberons | filter:query | orderBy:orderProp")
+         a(href='/biberons/{{biberon._id}}/edit' class='thumb') Biberons
+         br
+
+
+
   p Ajouter un biberons :
   a(href="/biberons/add") Ajouter un biberon

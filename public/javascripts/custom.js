@@ -5,7 +5,10 @@ myApp.config(['$resourceProvider', function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
-myApp.controller('BiberonController', ['$scope', function($scope) {
+myApp.controller('BiberonController',  ['$scope', 'Biberon', function($scope, Biberon) {
+  $scope.biberons = Biberon.query();
+
+  /*
   $scope.biberon = biberons;
 
   $scope.addBiberon = function(){
@@ -15,7 +18,11 @@ myApp.controller('BiberonController', ['$scope', function($scope) {
     $scope.qte=0;
     $scope.date="";
     $scope.heure="";
-};
+};*/
+}]);
+
+myApp.controller('BiberonDetailCtrl', ['$scope', '$routeParams', 'Biberon', function($scope, $routeParams, Biberon){
+  $scope.biberon = Biberon.get({biberonId: $routeParams.biberonId});
 }]);
 
 
