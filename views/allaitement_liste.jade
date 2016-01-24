@@ -9,7 +9,7 @@ block content
   h2
     a(href='/') page d'accueil
 
-  h3 Allaitement boucle jade :
+  h3 Liste des têtées :
   ul
     - each allaitement, i in allaitements
       li
@@ -29,20 +29,3 @@ block content
           a(href='/allaitements/#{allaitement._id}/edit') Editer
         p
           a(href='/allaitements/#{allaitement._id}') Voir
-
-  div Ajouter une têtée :
-    a(href="/allaitements/add")
-      | Ajouter une têtée
-
-  h2 Liste des têtées angular :
-  div(ng-controller='AllaitementController')
-    ul
-      li(ng-repeat="tetee in allaitement")
-        | Date : {{tetee.date}}
-        br
-        | heure : {{tetee.heure}}
-        br
-        | Sein utilisé : {{tetee.sein}}
-        br
-        | Durée : {{tetee.duree}}
-        br

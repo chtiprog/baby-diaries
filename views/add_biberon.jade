@@ -13,22 +13,11 @@ block content
     h3
       a(href='/biberons') retour à la liste des biberons
 
-  h3 Formulaire jade :
+  h3 Ajouter un biberon :
   form#formAddBiberon(name="addbiberon",method="post",action="/biberons")
     p Quantite:
       input#inputQuantite(type="number", placeholder="120", name="quantite")
-    p DOB:
+    p Date:
       input#inputDob(type="date", name="dob")
     p
       button#btnSubmit(type="submit") valider
-
-  h3 Formulaire angular :
-  div(ng-controller='BiberonController')
-    form(ng-submit='addBiberon()')
-      input(type='text', ng-model='qte', size='30', placeholder='quantite du biberon')
-      br
-      input(type='text', ng-model='date', size='30', placeholder='saisir la date')
-      br
-      input(type='text', ng-model='heure', size='30', placeholder='saisir l\'heure')
-      br
-      input(class='btn-primary', type='submit', value='ajouter', onclick="window.location='/biberons';")

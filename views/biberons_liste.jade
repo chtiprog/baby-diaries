@@ -9,7 +9,7 @@ block content
   h2
     a(href='/') page d'accueil
 
-  h3 Biberon boucle jade :
+  h3 Liste des biberons :
   ul
     - each biberon, i in biberons
       li
@@ -27,16 +27,6 @@ block content
         p
           a(href='/biberons/#{biberon._id}') Voir
 
-  h2 Liste des biberons angular :
-  div(ng-controller='BiberonController')
-    ul
-      li(ng-repeat="bib in biberon")
-        | Date : {{bib.date}}
-        br
-        | heure : {{bib.heure}}
-        br
-        | Quantite : {{bib.quantite}}
-        br
-
-  p Ajouter un biberons :
-  a(href="/biberons/add") Ajouter un biberon
+  div Ajouter un biberon :
+    a(href="/biberons/add")
+      | Ajouter un biberon

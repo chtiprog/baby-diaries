@@ -12,7 +12,7 @@ block content
   h3
     a(href='/repas') retour à la liste des repas solides
 
-  h3 Formulaire jade :
+  h3 Ajouter un repas :
   form#formAddRepas(name="addrepas", method="post", action="/repas")
     p Menu :
       input#inputMenu(type="text", placeholder="Description du menu", name="menu")
@@ -20,14 +20,3 @@ block content
       input#inputDob(type="date", name="dob")
     p
       button#btnSubmit(type="submit") Valider
-
-  h3 Formulaire angular :
-  div(ng-controller='RepasController')
-    form(ng-submit='addRepas()')
-      input(type='text', ng-model='menu', size='30', placeholder='Saisissez le menu')
-      br
-      input(type='text', ng-model='heure', size='30', placeholder='heure du repas')
-      br
-      input(type='text', ng-model='date', size='30', placeholder='date du repas pris')
-      br
-      input(class='btn-primary', type='submit', value='ajouter', onclick="window.location='/repas';")
