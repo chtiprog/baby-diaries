@@ -5,7 +5,7 @@ You can track the feeds needs, the digestive function of yours babies, as well a
 You can register every injuries.
 Most features will be added as the curve of weight and size and statistics functions.
 
-The application use NODE.JS, EXPRESS, ANGULAR and MONGODB.
+The application use NODE.JS, EXPRESS and MONGODB.
 - install node.js and mongodb
 - start the mongodb server : `mongod`
 - clone the repository
@@ -13,6 +13,7 @@ The application use NODE.JS, EXPRESS, ANGULAR and MONGODB.
 - to start the application :
 ```
     DEBUG=bebe_express npm start
-```
+    ```
+
 and go to http://localhost:3000
 
