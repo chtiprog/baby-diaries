@@ -14,7 +14,7 @@ block content
       a(href='/biberons') retour à la liste des biberons
 
   h3 Ajouter un biberon :
-  form#formAddBiberon(name="addbiberon",method="post",action="/biberons")
+  form#formAddBiberon(name="addbiberon", required="true", method="post",action="/biberons")
     p Quantite:
       input#inputQuantite(type="number", placeholder="120", name="quantite")
     p Date:
