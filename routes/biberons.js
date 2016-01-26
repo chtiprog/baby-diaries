@@ -46,12 +46,15 @@ router.route('/')
   .post(function(req, res) {
     // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
     var quantite = req.body.quantite;
-    var dob = req.body.dob;
+    var dob = req.body.dob || null;
+    var nouveauBiberon = null;
+    if (dob) {
+      nouveauBiberon = {quantite: quantite, dob: dob};
+    } else {
+      nouveauBiberon = {quantite: quantite}
+    }
     //call the create function for our database
-    mongoose.model('Biberon').create({
-      quantite : quantite,
-      dob : dob
-    }, function (err, biberon) {
+    mongoose.model('Biberon').create(nouveauBiberon, function (err, biberon) {
       if (err) {
         res.send("Il y a eu un problème en ajoutant les informations à la base de donnée.");
       } else {
