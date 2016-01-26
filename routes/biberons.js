@@ -51,7 +51,7 @@ router.route('/')
     if (dob) {
       nouveauBiberon = {quantite: quantite, dob: dob};
     } else {
-      nouveauBiberon = {quantite: quantite}
+      nouveauBiberon = {quantite: quantite};
     }
     //call the create function for our database
     mongoose.model('Biberon').create(nouveauBiberon, function (err, biberon) {
