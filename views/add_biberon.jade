@@ -14,10 +14,26 @@ block content
       a(href='/biberons') retour à la liste des biberons
 
   h3 Ajouter un biberon :
+  script.
+    var validation= function(){
+      var quantite = document.getElementById("inputQuantite").value;
+      var dob = document.getElementById("inputDob").value;
+      if (quantite === ""){
+        alert("Merci de remplir la quantite");
+        return false;
+      }
+      else if (quantite <0) {
+        alert("Quantité négative");
+        return false;
+      }
+      else
+        return true;
+    };
+
   form#formAddBiberon(name="addbiberon", required="true", method="post",action="/biberons")
     p Quantite:
-      input#inputQuantite(type="number", placeholder="120", name="quantite")
+      input#inputQuantite(type="number", name="quantite", placeholder="120")
     p Date:
       input#inputDob(type="date", name="dob")
     p
-      button#btnSubmit(type="submit") valider
+      button#btnSubmit(type="submit", onclick="return validation()") valider

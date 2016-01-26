@@ -1,7 +1,9 @@
 var express = require('express');
+var util = require('util');
 var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser'); // parses information from POST
+var expressValidator = require('express-validator');
 var methodOverride = require('method-override'); // used to manipulate POST
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -45,9 +47,15 @@ router.route('/')
 //POST a new biberon
   .post(function(req, res) {
     // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
+    req.checkBody('quantite', 'quantite invalide').notEmpty().isInt();
     var quantite = req.body.quantite;
     var dob = req.body.dob || null;
     var nouveauBiberon = null;
+    var errors = req.validationErrors();
+    if (errors) {
+    res.send('Il y a des erreurs de validations: ' + util.inspect(errors), 400);
+    return;
+  }
     if (dob) {
       nouveauBiberon = {quantite: quantite, dob: dob};
     } else {
