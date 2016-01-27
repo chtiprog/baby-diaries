@@ -1,7 +1,9 @@
 var express = require('express');
+var util = require('util');
 var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser'); // parses information from POST
+var expressValidator = require('express-validator'); // to validate forms
 var methodOverride = require('method-override'); // used to manipulate POST
 
 router.use(bodyParser.urlencoded({ extended: true}));
@@ -45,15 +47,27 @@ router.route('/')
 //POST a new allaitement
   .post(function(req,res) {
     // Get values from POST request, these can be done through forms or REST calls. These rely on th "name" attributes for forms
-    var sein = req.body.sein;
+    req.checkBody('duree', 'duree invalide').notEmpty().isInt();
+    var sein = req.body.sein || null;
     var duree = req.body.duree;
-    var dob = req.body.dob;
+    var dob = req.body.dob || null;
+    var nouvelleTetee = null;
+    var errors = req.validationErrors();
+    if (errors) {
+      res.send('Il y a des erreurs de validations : ' + util.inspect(errors), 400);
+      return;
+    }
+    if (dob && sein) {
+      nouvelleTetee = {sein: sein, duree: duree, dob: dob};
+    } else if (dob) {
+      nouvelleTetee = {dob: dob, duree: duree};
+    } else if(sein) {
+      nouvelleTetee = {sein: sein, duree: duree};
+    } else {
+      nouvelleTetee = {duree: duree};
+    }
     // call the create function for our database
-    mongoose.model('Allaitement').create({
-      sein: sein,
-      duree: duree,
-      dob: dob
-    }, function(err, allaitement) {
+    mongoose.model('Allaitement').create(nouvelleTetee, function(err, allaitement) {
       if (err){
         res.send("Il y a eu un problème en ajoutant les informations (allaitement) à la base de donnée.");
       } else {

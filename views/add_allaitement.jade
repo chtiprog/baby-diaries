@@ -13,6 +13,21 @@ block content
     a(href='/allaitements') retour à la liste des têtées
 
   h3 Ajouter une têtée :
+  script.
+    var validation = function(){
+      var duree = document.getElementById("inputDuree").value;
+      if (duree === ""){
+        alert("Merci de saisir la durée de la têtée");
+        return false;
+        }
+        else if (duree <0 || duree > 90){
+          alert("durée incorrecte");
+          return false;
+        }
+        else
+          return true;
+        };
+
   form#formAddAllaitement(name="addallaitement", method="post",action="/allaitements")
     p Sein:
       input#inputSein(type="text", placeholder="gauche ou droit", name="sein")
@@ -21,4 +36,4 @@ block content
     p Date:
       input#inputDob(type="date", name="dob")
     p
-      button#btnSubmit(type="submit") valider
+      button#btnSubmit(type="submit", onclick ="return validation()") valider
