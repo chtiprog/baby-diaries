@@ -13,10 +13,21 @@ block content
     a(href='/repas') retour à la liste des repas solides
 
   h3 Ajouter un repas :
+  script.
+    var validation= function(){
+      var menu = document.getElementById("inputMenu").value;
+      if (menu === ""){
+        alert("Merci de remplir le menu");
+        return false;
+      }
+      else
+        return true;
+    };
+
   form#formAddRepas(name="addrepas", method="post", action="/repas")
     p Menu :
       input#inputMenu(type="text", placeholder="Description du menu", name="menu")
     p Date :
       input#inputDob(type="date", name="dob")
     p
-      button#btnSubmit(type="submit") Valider
+      button#btnSubmit(type="submit", onclick="return validation()") Valider
