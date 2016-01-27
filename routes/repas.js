@@ -1,7 +1,9 @@
 var express = require('express');
+var util = require('util');
 var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 var methodOverride = require('method-override');
 
 router.use(bodyParser.urlencoded({ extended: true}));
@@ -41,12 +43,21 @@ router.route('/')
 // POST a new repas
   .post(function(req,res){
     // Get values from POST resquest.
+    req.checkBody('menu', 'menu invalide').notEmpty().isAlpha(); // Verification form, menu can't be empty or not string
     var menu = req.body.menu;
-    var dob = req.body.dob;
-    mongoose.model('Repas').create({
-      menu : menu,
-      dob : dob
-    }, function(err,repas){
+    var dob = req.body.dob || null;
+    var nouveauRepas = null;
+    var errors = req.validationErrors();
+    if (errors) {
+      res.send('Il y a des erreurs de validations: ' + util.inspect(errors), 400);
+      return;
+    }
+    if (dob) {
+      nouveauRepas = {menu: menu, dob: dob};
+    } else {
+      nouveauRepas = {menu: menu};
+    }
+    mongoose.model('Repas').create(nouveauRepas, function(err,repas){
       if(err) {
         res.send("Il y a eu un problème en ajouter les informations (repas) à la base de donnée.");
       }else{
