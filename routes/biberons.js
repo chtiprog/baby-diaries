@@ -178,16 +178,25 @@ router.route('/:id/edit')
 //PUT to update a biberon by ID
   .put(function(req, res) {
     // Get our REST or form values. These rely on the "name" attributes
+    req.checkBody('quantite', 'quantite invalide').notEmpty().isInt();
     var quantite = req.body.quantite;
-    var dob = req.body.dob;
+    var dob = req.body.dob || null;
+    var nouveauBiberon = null;
+    var errors = req.validationErrors();
+    if (errors) {
+    res.send('Il y a des erreurs de validations: ' + util.inspect(errors), 400);
+    return;
+  }
+    if (dob) {
+      nouveauBiberon = {quantite: quantite, dob: dob};
+    } else {
+      nouveauBiberon = {quantite: quantite};
+    }
 
     //find the document by ID
     mongoose.model('Biberon').findById(req.id, function (err, biberon) {
       //update it
-      biberon.update({
-        quantite : quantite,
-        dob : dob
-      }, function (err, biberonID) {
+      biberon.update(nouveauBiberon, function (err, biberonID) {
         if (err) {
           res.send("Il y a eu un problème en mettant à jour les informations de la base de donnée: " + err);
         }
