@@ -11,6 +11,21 @@ block content
 
 
   h2 Têtée ID #{allaitement._id}
+  script.
+    var validation= function(){
+      var duree = document.getElementById("inputDuree").value;
+      if (duree === "") {
+        alert("Veuillez saisir une durée");
+        return false;
+        }
+      else if(duree <0 || duree > 90){
+        alert("Durée incorrecte");
+        return false;
+      }
+      else
+        return true;
+        };
+
   form(action='/allaitements/#{allaitement._id}/edit', method='post', name='updateallaitement', enctype='application/x-www-form-urlencoded')
     p Sein:
       input#inputSein(type='text', value='#{allaitement.sein}', name='sein')
@@ -21,5 +36,5 @@ block content
     p
       input(type='hidden', value='PUT', name='_method')
     p
-      button#btnSubmit(type='submit').
+      button#btnSubmit(type='submit', onclick='return validation()').
        Modifier
