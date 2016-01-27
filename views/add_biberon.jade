@@ -22,8 +22,8 @@ block content
         alert("Merci de remplir la quantite");
         return false;
       }
-      else if (quantite <0) {
-        alert("Quantité négative");
+      else if (quantite <0 || quantite > 500) {
+        alert("Quantité incorrecte");
         return false;
       }
       else
