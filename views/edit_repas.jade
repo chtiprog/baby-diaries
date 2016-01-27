@@ -11,6 +11,17 @@ block content
 
 
   h3 Repas ID #{repas._id}
+    script.
+      var validation= function(){
+        var menu = document.getElementById("inputMenu").value;
+        if (menu === ""){
+          alert("Merci de remplir le menu");
+          return false;
+        }
+        else
+          return true;
+      };
+
   form(action='/repas/#{repas._id}/edit', method='post', name='updaterepas', enctype='applicatin/x-www-form-urlencoded')
     p Menu :
       input#inputMenu(type="text", value="#{repas.menu}", name="menu")
@@ -19,5 +30,5 @@ block content
     p
       input(type="hidden", value="PUT", name="_method")
     p
-      button#btnSubmit(type="submit").
+      button#btnSubmit(type="submit", onclick="return validation()").
         Modifier
