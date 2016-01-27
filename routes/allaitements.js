@@ -47,7 +47,7 @@ router.route('/')
 //POST a new allaitement
   .post(function(req,res) {
     // Get values from POST request, these can be done through forms or REST calls. These rely on th "name" attributes for forms
-    req.checkBody('duree', 'duree invalide').notEmpty().isInt();
+    req.checkBody('duree', 'duree invalide').notEmpty().isInt(); // Verify the form, duree can't be empty or not Int.
     var sein = req.body.sein || null;
     var duree = req.body.duree;
     var dob = req.body.dob || null;
@@ -182,18 +182,30 @@ router.route('/:id/edit')
 // PUT to update an allaitement by ID
   .put(function(req, res){
     // GET our REST or form values. These rely on the "name" attributes
-    var sein = req.body.sein;
+    req.checkBody('duree', 'duree invalide').notEmpty().isInt(); // Verify the form, duree can't be empty or not Int.
+    var sein = req.body.sein || null;
     var duree = req.body.duree;
-    var dob = req.body.dob;
+    var dob = req.body.dob || null;
+    var nouvelleTetee = null;
+    var errors = req.validationErrors();
+    if (errors) {
+      res.send('Il y a des erreurs de validations : ' + util.inspect(errors), 400);
+      return;
+    }
+    if (dob && sein) {
+      nouvelleTetee = {sein: sein, duree: duree, dob: dob};
+    } else if (dob) {
+      nouvelleTetee = {dob: dob, duree: duree};
+    } else if(sein) {
+      nouvelleTetee = {sein: sein, duree: duree};
+    } else {
+      nouvelleTetee = {duree: duree};
+    }
 
     // find the document by ID
     mongoose.model('Allaitement').findById(req.id, function(err, allaitement) {
       // update it
-      allaitement.update({
-        sein : sein,
-        duree : duree,
-        dob : dob
-      }, function(err, allaitementID) {
+      allaitement.update(nouvelleTetee, function(err, allaitementID) {
         if (err) {
           res.send("Il y a eu un problème en mettant à jour les informations de la base de donnée : " + err);
         }
