@@ -48,7 +48,7 @@ router.route('/')
   .post(function(req, res) {
     // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
     req.checkBody('fruits', 'fruits invalide').notEmpty().isAlpha();
-    req.checkBody('quantite', 'quantite invalide').notEmpty().isAlpha();
+    req.checkBody('quantite', 'quantite invalide').notEmpty().isInt();
     var fruits = req.body.fruits;
     var quantite = req.body.quantite;
     var dob = req.body.dob || null;

@@ -1,0 +1,41 @@
+doctype html
+extends layout
+
+
+block content
+  h1=title
+  p Welcome to #{title}
+
+  h2
+    a(href='/') page d'accueil
+
+
+  h2 Jus ID #{jus._id}
+  script.
+    var validation= function(){
+      var fruits = document.getElementById("inputFruits").value;
+      var quantite = document.getElementById("inputQuantite").value;
+      if (fruits === "" || quantite == "") {
+        alert("Veuillez remplir les champs");
+        return false;
+        }
+      else if(quantite <0 || quantite > 200){
+        alert("Quantite incorrecte");
+        return false;
+      }
+      else
+        return true;
+        };
+
+  form(action='/jus/#{jus._id}/edit', method='post', name='updatejus', enctype='application/x-www-form-urlencoded')
+    p Fruits:
+      input#inputFruits(type='text', value='#{jus.fruits}', name='fruits')
+    p Quantite:
+      input#inputQuantite(type='number', value='#{jus.quantite}', name='quantite')
+    p DOB:
+      input#inputDob(type='date', value='#{jusdob}', name='dob')
+    p
+      input(type='hidden', value='PUT', name='_method')
+    p
+      button#btnSubmit(type='submit', onclick='return validation()').
+       Modifier

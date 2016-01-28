@@ -11,10 +11,12 @@ var users = require('./routes/users');
 var biberons = require('./routes/biberons');
 var allaitements = require('./routes/allaitements');
 var repas = require('./routes/repas');
+var jus = require('./routes/jus');
 var db = require('./model/db');
 var biberon = require('./model/biberons');
 var allaitement = require('./model/allaitements');
 var rep = require('./model/repas');
+var ju = require('./model/jus');
 var app = express();
 
 // view engine setup
@@ -34,6 +36,7 @@ app.use('/', routes);
 app.use('/biberons', biberons);
 app.use('/allaitements', allaitements);
 app.use('/repas', repas);
+app.use('/jus', jus);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,16 @@
+doctype html
+extends layout
+
+block content
+  h1=title
+
+  h2
+    a(href='/') page d'accueil
+
+
+  p Edition du jus
+
+  h1 Jus ref : #{jus._id}
+  p Fruits : #{jus.fruits}
+  p Quantite : #{jus.quantite}
+  p Date: #{jus.dob}

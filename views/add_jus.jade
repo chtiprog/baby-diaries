@@ -1,0 +1,41 @@
+doctype html
+extends layout
+
+
+
+block content
+
+  h1=title
+
+    h2
+      a(href='/') page d'accueil
+
+    h3
+      a(href='/jus') retour à la liste des jus
+
+  h3 Ajouter un jus :
+  script.
+    var validation= function(){
+      var fruits = document.getElementById("inputFruits").value;
+      var quantite = document.getElementById("inputQuantite").value;
+      if (quantite === "" || fruits === ""){
+        alert("Merci de remplir les champs requis");
+        return false;
+      }
+      else if (quantite <0 || quantite > 200) {
+        alert("Quantité incorrecte");
+        return false;
+      }
+      else
+        return true;
+    };
+
+  form#formAddJus(name="addjus", required="true", method="post",action="/jus")
+    p Fruits:
+      input#inputFruits(type="text", name="fruits")
+    p Quantite:
+      input#inputQuantite(type="number", name="quantite", placeholder="120")
+    p Date:
+      input#inputDob(type="date", name="dob")
+    p
+      button#btnSubmit(type="submit", onclick="return validation()") valider
