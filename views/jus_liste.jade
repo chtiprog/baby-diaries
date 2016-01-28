@@ -1,0 +1,34 @@
+doctype html
+extends layout
+
+
+
+block content
+  h1= title
+
+  h2
+    a(href='/') page d'accueil
+
+  h3 Liste des jus :
+  ul
+    - each ju, i in jus
+      li
+        | Fruits
+        = ju.fruits
+        | Quantite
+        = ju.quantite
+        br
+        | Date et heure
+        = ju.dob
+        br
+        form(action='/jus/#{ju._id}/edit',method='post',name='deletejus' ,enctype='application/x-www-form-urlencoded')
+          input(type='hidden',value='DELETE',name='_method')
+          button(type='submit')  Supprimer
+        p
+          a(href='/jus/#{ju._id}/edit') Editer
+        p
+          a(href='/jus/#{ju._id}') Voir
+
+  div Ajouter un jus :
+    a(href="/jus/add")
+      | Ajouter un jus
